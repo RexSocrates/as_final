@@ -25,7 +25,7 @@ toolbox.register("mate", tools.cxUniform)
 # mutation function
 toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=1, indpb=0.1) 
 # selection of next generation
-toolbox.register("select", tools.selBest, tournsize=3) 
+toolbox.register("select", tools.selTournament, tournsize=3) 
 # evaluate the fitness value of the chromosome
 toolbox.register("evaluate", evaluate)
 
