@@ -60,6 +60,7 @@ def main():
     	# Clone the selected individuals
     	offspring = list(map(toolbox.clone, offspring))
 
+    	# apply crossover and mutation on the offspring
     	for child1, child2 in zip(offspring[::2], offspring[1::2]):
             if random.random() < CXPB:
                 toolbox.mate(child1, child2)
@@ -70,6 +71,28 @@ def main():
             if random.random() < MUTPB:
                 toolbox.mutate(mutant)
                 del mutant.fitness.values
+
+        # Evaluate the individuals with an invalid fitness
+        invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+        fitnesses = map(toolbox.evaluate, invalid_ind)
+        for ind, fit in zip(invalid_ind, fitnesses):
+            ind.fitness.values = fit
+
+        # replace old population
+        pop[:] = offspring
+
+        # get fitness value of the population
+        fits = [ind.fitness.value[0] for ind in pop]
+
+        length = len(pop)
+        mean = sum(fits) / length
+        sum2 = sum(x*x for x in fits)
+        std = abs(sum2 / length - mean**2)**0.5
+        
+        print("  Min %s" % min(fits))
+        print("  Max %s" % max(fits))
+        print("  Avg %s" % mean)
+        print("  Std %s" % std)
 
 
 
