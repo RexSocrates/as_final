@@ -1,7 +1,7 @@
 from deap import base, creator, tools
 
 creator.create("Fitness_mini", base.Fitness, weights=(-1.0,))
-creator.create("Individual", list, fitness=creator.FitnessMax)
+creator.create("Individual", list, fitness=creator.Fitness_mini)
 
 import random
 from deap import tools
