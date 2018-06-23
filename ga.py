@@ -82,7 +82,7 @@ def main():
         pop[:] = offspring
 
         # get fitness value of the population
-        fits = [ind.fitness.value[0] for ind in pop]
+        fits = [ind.fitness.values[0] for ind in pop]
 
         length = len(pop)
         mean = sum(fits) / length
