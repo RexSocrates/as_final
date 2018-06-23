@@ -95,8 +95,5 @@ def main():
         print("  Std %s" % std)
 
 
-
-
-
-
-
+if __name__ == "__main__":
+    main()
