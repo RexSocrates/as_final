@@ -18,6 +18,8 @@ toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
 # fitness function
 def evaluate(individual): 
+	for item in individual :
+		print(item)
     return sum(individual),
 
 # choose the crossover function as uniform
