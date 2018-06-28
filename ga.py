@@ -31,15 +31,15 @@ toolbox.register("select", tools.selTournament, tournsize=3)
 # evaluate the fitness value of the chromosome
 toolbox.register("evaluate", evaluate)
 
-def main():
-    pop = toolbox.population(n=50)
+def main(size, CXPB, MUTPB):
+    pop = toolbox.population(n=size)
     # print(pop)
 
     # crossover rate
-    CXPB = 0.5
+    #CXPB = 0.5
 
     # mutation rate
-    MUTPB = 0.2
+    #MUTPB = 0.2
 
     # number of generations
     NGEN = 1000
@@ -98,4 +98,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+	populationSizes = [20, 60, 100]
+	crossoverRates = [0.1, 0.2, 0.6, 0.8, 0.9]
+	mutationRates = [0.001, 0.005, 0.01, 0.02]
+
+	for size in populationSizes :
+		for cxRate in crossoverRates :
+			for mutRate in mutationRates :
+				main(size, cxRate, mutRate)
+    #main()
